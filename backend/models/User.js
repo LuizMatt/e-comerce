@@ -1,32 +1,32 @@
 module.exports = (sequelize, DataTypes) => {
-    const Product = sequelize.define('Product', {
+    const User = sequelize.define('User', {
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
 
-        description: {
-            type: DataTypes.TEXT
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true
+            }
         },
 
-        price: {
-            type: DataTypes.DECIMAL(10, 2),
-            allowNull: false
-        },
-
-        stock: {
-            type: DataTypes.INTEGER,
+        password: {
+            type: DataTypes.STRING,
             allowNull: false
         }
     });
 
-    Product.associate = (models) => {
-        Product.hasMany(models.OrderItem, {
-            foreignKey: 'product_id',
-            as: 'order_items'
+    User.associate = (models) => {
+        User.hasMany(models.Order, {
+            foreignKey: 'user_id',
+            as: 'orders'
         });
     };
 
-    return Product;
+    return User;
 };
   
