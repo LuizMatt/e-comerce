@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const UserRoutes = require('./routes/UserRoutes');
-
+const ProductRoutes = require('./routes/ProductRoutes');
 const sequelize = require('./config/database'); 
 
 const app = express();
@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use('/api', UserRoutes);
+app.use('/uploads', express.static('public/uploads'));
+app.use('/api', ProductRoutes);
 
 app.get('/', (req, res) => {
     res.send('API rodando com sucesso!');
