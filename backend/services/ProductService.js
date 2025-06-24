@@ -1,4 +1,6 @@
 const { Product } = require('../models'); 
+const fs = require('fs');
+const path = require('path');
 
 const createProduct = async ({ name, description, price, stock }, imagePath) => {
     const product = await Product.create({
@@ -38,8 +40,21 @@ const updateProduct = async (id, { name, description, price, stock }, imagePath)
 };
 
 const deleteProduct = async (id) => {
-    const deleted = await Product.destroy({ where: { id } });
-    if (!deleted) throw new Error('Produto não encontrado');
+    const product = await Product.findByPk(id);
+    if (!product) throw new Error('Produto não encontrado');
+
+    if (product.image) {
+        const imagePath = path.join(__dirname, '..', 'public', product.image); // product.image é /uploads/arquivo.png
+        fs.unlink(imagePath, (err) => {
+            if (err) {
+                console.error('Erro ao deletar imagem:', err.message);
+            } else {
+                console.log('Imagem deletada com sucesso.');
+            }
+        });
+    }
+
+    await Product.destroy({ where: { id } });
 };
 
 module.exports = {
