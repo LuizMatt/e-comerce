@@ -6,6 +6,7 @@ const UserRoutes = require('./routes/UserRoutes');
 const ProductRoutes = require('./routes/ProductRoutes');
 const OrderRoutes = require('./routes/OrderRoutes');
 const sequelize = require('./config/database');
+const OrderItemRoutes = require('./routes/OrderItemRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/users', UserRoutes);
 app.use('/products', ProductRoutes);
 app.use('/orders', OrderRoutes);
+app.use('/order-items', OrderItemRoutes);
 app.use('/uploads', express.static('public/uploads'));
 
 app.get('/', (req, res) => {
