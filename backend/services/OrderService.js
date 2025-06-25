@@ -11,13 +11,17 @@ const createOrder = async ({ user_id, items }) => {
         const product = await Product.findByPk(item.product_id);
         if (!product) throw new Error(`Produto ID ${item.product_id} não encontrado`);
 
+        if (product.stock < item.quantity) {
+            throw new Error(`Estoque insuficiente para o produto "${product.name}"`);
+        }
+
         const subtotal = parseFloat(product.price) * item.quantity;
         total += subtotal;
 
         orderItemsData.push({
             product_id: item.product_id,
             quantity: item.quantity,
-            price: product.price 
+            price: product.price
         });
     }
 
@@ -28,10 +32,15 @@ const createOrder = async ({ user_id, items }) => {
             order_id: order.id,
             ...itemData
         });
+
+        const product = await Product.findByPk(itemData.product_id);
+        product.stock -= itemData.quantity;
+        await product.save();
     }
 
     return order;
 };
+
 
 const getOrderById = async (id) => {
     const order = await Order.findByPk(id, {
@@ -42,9 +51,10 @@ const getOrderById = async (id) => {
                 include: [
                     {
                         model: Product,
+                        as: 'product', 
                         attributes: ['name']
                     }
-                ]
+                  ]
             },
             {
                 model: User,
@@ -64,7 +74,14 @@ const getAllOrders = async () => {
             {
                 model: OrderItem,
                 as: 'items',
-                include: [{ model: Product, attributes: ['name'] }]
+                include: [
+                    {
+                        model: Product,
+                        as: 'product', 
+                        attributes: ['name']
+                    }
+                ]
+          
             },
             {
                 model: User,
