@@ -1,0 +1,49 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2C3E50;
+    color: white;
+    padding: 4rem 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .hero-content {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .hero-benefits {
+    flex: 1;
+    background-color: #3E536B;
+    padding: 2rem;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .benefit img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.5rem;
+  }
+  
