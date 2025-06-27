@@ -1,31 +1,49 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="header">
-      <a href="#" className="header-logo">
-        JuniorFerragens
-      </a>
+    <header className="header">
+      <Link to="/" className="header-logo">
+        <span className="logo-highlight">Junior</span> ferragens
+      </Link>
 
-      <nav className="navbar">
-        <a href="#" className="nav-link">
-          Meus pedidos
-        </a>
-        <a href="#" className="nav-link">
-          Fale conosco
-        </a>
-        <a href="#" className="nav-link">
-          Carrinho
-        </a>
-        <a href="#" className="nav-link">
-          Criar conta
-        </a>
-        <button>Login</button>
+      <nav className="navbar" aria-label="Main navigation">
+        <ul className="navbar-list">
+          <li className="navbar-item">
+            <Link to="/">Início</Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/produtos">Produtos</Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/sobre">Sobre nós</Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/contato">Contato</Link>
+          </li>
+        </ul>
       </nav>
-    </div>
+
+      <div className="navbar-actions">
+        <input
+          type="text"
+          placeholder="Buscar produtos..."
+          className="search-input"
+        />
+
+        <button className="cart-button">
+          <FaShoppingCart />
+        </button>
+
+        <Link to="/login" className="login-button">
+          Login
+        </Link>
+      </div>
+    </header>
   );
 };
 
 export default Navbar;
-
