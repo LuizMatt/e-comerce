@@ -1,17 +1,23 @@
 import "./App.css";
-import Hero from "./components/hero/Hero";
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import Hero from "./components/hero/Hero";
+import Sobre from "./pages/sobre/Sobre";
+
 function App() {
   return (
-    <>
-      <div>
-        <Navbar />
-        <Hero />
-        <Footer />
-      </div>
-    </>
+    <div className="app-container">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/sobre" element={<Sobre />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
+
 
 export default App;

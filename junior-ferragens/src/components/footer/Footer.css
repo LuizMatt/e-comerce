@@ -1,5 +1,5 @@
 .footer {
-    background-color: #2e3e50; /* azul escuro da imagem */
+    background-color: #2e3e50; 
     color: #ffffff;
     padding: 40px 20px 20px;
     font-size: 14px;
@@ -29,7 +29,7 @@
   }
   
   .footer-section a {
-    color: #d1d5db; /* cinza claro */
+    color: #d1d5db; 
     text-decoration: none;
     transition: color 0.3s ease;
   }

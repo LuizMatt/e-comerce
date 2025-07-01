@@ -4,3 +4,19 @@
   padding: 0
 }
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-container > *:nth-last-child(2) {
+  flex: 1;
+}
+
