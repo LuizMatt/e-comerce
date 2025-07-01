@@ -15,7 +15,8 @@ const FeaturedProducts = () => {
 
   return (
     <div className="featured-products">
-      <h2>Produtos em Destaque</h2>
+      <h2 className="products-title">Produtos em Destaque</h2>
+      <h4 className="products-subtitle">Conheça os itens mais populares!</h4>
       <div className="product-list">
         {products.map((product) => (
           <Card
