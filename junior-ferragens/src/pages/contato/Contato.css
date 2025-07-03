@@ -1,0 +1,135 @@
+.contato-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 40px;
+    font-family: "Arial", sans-serif;
+    background-color: #fff;
+  }
+  
+  .informacoes-contato,
+  form {
+    flex: 1;
+    background-color: #f2f2f2;
+    padding: 30px 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    color: #2c3e50;
+  }
+  
+  .informacoes-contato h2,
+  form h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    color: #2c3e50;
+  }
+  
+  .info svg {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  
+  .info h3 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .info p {
+    margin: 2px 0 0;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  
+  input,
+  textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #2c3e50;
+  }
+  
+  textarea {
+    resize: none;
+    min-height: 100px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+  }
+  
+  button[type="submit"] {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: fit-content;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #1f2f3e;
+  }
+  
+  @media (max-width: 768px) {
+    section {
+      flex-direction: column;
+    }
+  
+    .form-row {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    section {
+      padding: 20px;
+    }
+  
+    .informacoes-contato h2,
+    form h2 {
+      font-size: 1.4rem;
+    }
+  
+    .info h3 {
+      font-size: 1rem;
+    }
+  
+    .info p {
+      font-size: 0.9rem;
+    }
+  
+    input,
+    button[type="submit"] {
+      font-size: 0.9rem;
+    }
+  }
+  
