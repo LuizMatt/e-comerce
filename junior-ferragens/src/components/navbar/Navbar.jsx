@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { useState } from "react";
 import "./Navbar.css";
+import CartOverlay from "../cartOverlay/CartOverlay";
 
 const Navbar = () => {
+
+  const [showCart, setShowCart] = useState(false);
+
   return (
-    <header className="header">
+    <nav className="header">
       <Link to="/" className="header-logo">
         <span className="logo-highlight">Junior</span> ferragens
       </Link>
@@ -34,15 +39,16 @@ const Navbar = () => {
           className="search-input"
         />
 
-        <button className="cart-button">
+        <button onClick={() => setShowCart(true)} className="cart-button">
           <FaShoppingCart />
         </button>
 
-        <Link to="/login" className="login-button">
+        <Link to="/#" className="login-button">
           Login
         </Link>
       </div>
-    </header>
+      {showCart && <CartOverlay onClose={() => setShowCart(false)} />}
+    </nav>
   );
 };
 

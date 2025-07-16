@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.css";
 
-const Card = ({ title, description, imageUrl, price }) => {
+const Card = ({ title, description, imageUrl, price, onAddToCart }) => {
   return (
     <div className="card">
       <div className="card-image-container">
@@ -17,7 +17,12 @@ const Card = ({ title, description, imageUrl, price }) => {
         <p className="card-description">{description}</p>
         <p className="card-price">R$ {parseFloat(price).toFixed(2)}</p>
         <div className="card-buttons">
-          <button className="card-button">Adicionar ao carrinho</button>
+          <button
+            className="card-button"
+            onClick={() => onAddToCart({ title, price, imageUrl })}
+          >
+            Adicionar ao carrinho
+          </button>
           <button className="card-outline">Fazer orçamento</button>
         </div>
       </div>

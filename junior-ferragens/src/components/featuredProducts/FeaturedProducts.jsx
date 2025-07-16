@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../card/Card";
 import axios from "axios";
 import "./FeaturedProducts.css";
+import { addToCart } from "../../utils/cart";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +14,10 @@ const FeaturedProducts = () => {
       .catch((error) => console.error("Erro ao buscar produtos:", error));
   }, []);
 
+  const handleAddToCart = (item) => {
+    addToCart(item);
+    window.dispatchEvent(new Event("storage")); 
+  };
   return (
     <div className="featured-products">
       <h2 className="products-title">Produtos em Destaque</h2>
@@ -25,6 +30,7 @@ const FeaturedProducts = () => {
             description={product.description}
             imageUrl={product.image}
             price={product.price}
+            onAddToCart={handleAddToCart}
           />
         ))}
       </div>
