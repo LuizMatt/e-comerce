@@ -4,6 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useState } from "react";
 import "./Navbar.css";
 import CartOverlay from "../cartOverlay/CartOverlay";
+import Products from "../../pages/produtos/Produtos";
 
 const Navbar = () => {
 
